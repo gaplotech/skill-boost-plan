@@ -1,0 +1,15 @@
+{
+  "name": "next-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "../node_modules/.bin/next dev",
+    "build": "../node_modules/.bin/next build",
+    "start": "../node_modules/.bin/next start"
+  },
+  "dependencies": {
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
