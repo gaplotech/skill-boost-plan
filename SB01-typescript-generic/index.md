@@ -38,23 +38,37 @@ new Sth<object>()
 
 ```
 
----
+## 答案
+<details>
+  <summary>檢查答案</summary>
 
-設立【技術躍升系列】主要為了提升本土開發者 Programming / Software Engineering 興趣及技術、一同擴闊本土開發者的視野，將自身累積嘅知識承傳落去，將技術要求的最低門檻一步步提升，從而提升 HKIT 的質素。
+```
+C, D
 
-【技術躍升系列】將會每週不定時發佈 1 至 N 次技術題目或相關有助提升 Productivity 的分享，題目會以 Software Engineering 為重點，涵蓋日常的軟件開發陷阱、進階的語言技巧、Database Design、系統架構、Cloud Native
+C : 因為 `foo: string` not extends Foo
+D : 因為 String interface 有 property, 而且一定唔係 Foo.
+```
 
-暫時所有題材及題目會新自擬定，並會集中於自己經驗或有興趣的方面，包括但不限於以下種類：
+### 為什麼 E 不是？
+```
+E: 因為 string 係 primitive type 冇任何 key-value property，
+  所以 type constraints 唔會對。而本身 string 係 compatible type to {}
+```
 
-\#Git
-\#Backend \#iOS \#Android #Web
-\#Kotlin \#Swift \#Javascript \#Typescript \#Java \#Rust
-\#DevOps \#Kubernetes
-\#Concurrent \#HighThroughput \#DistributedSystem
-\#MongoDB #Redis
-\#DesignPattern
+</details>
 
-連自己都唔知可以堅持到幾耐，老土咁講，大家嘅支持就係唯一嘅推動力。
-\#毋忘建立Gap撈Tech的初衷
 
-\#此帖無人贊助 #歡迎冠名贊助
+## 承上題
+如果呢個係一個 Bug，其實想令 E 都出 Type Check Error，可以點做？
+
+<details>
+  <summary>檢查答案</summary>
+
+```ts
+// Add `object`  
+type SthType<T> = object & {
+    [key in keyof T]: T[key] & Foo
+}
+```
+
+</details>
