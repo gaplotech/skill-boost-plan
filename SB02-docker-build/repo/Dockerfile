@@ -1,5 +1,5 @@
 # Use a more specific version for your production containers can help resolve issues
-FROM node:12.18.1-alpine3.12
+FROM node:12.18.1-alpine3.12 as FirstStage
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -17,8 +17,18 @@ COPY public ./public
 # Copying source files
 COPY pages ./pages
 
-# Building app
-RUN yarn build
+# 1. Building app
+# 2. Remove Dev Dependencies
+RUN yarn build \
+    && yarn install --production --frozen-lockfile --offline
+
+# Final Stage
+FROM node:12.18.1-alpine3.12
+
+WORKDIR /usr/src/app
+
+# Copy all files from builder
+COPY --from=FirstStage /usr/src/app /usr/src/app
 
 # This don't actually publish the port but to give better documentation to your DevOps colleagues
 EXPOSE 3000
