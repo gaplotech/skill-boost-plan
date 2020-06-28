@@ -1,4 +1,4 @@
-###【技術躍升系列】SB02
+### 技術躍升系列 - SB02
 
 這是一條關於 Docker Build 的情境題目，情境如下：
 
@@ -8,10 +8,15 @@
 npx create-next-app
 ```
 
+
 <🔊>
+
 技術躍升 Online 大型 Gathering！
+
 快啲去報名啦！➡️ https://go.aws/3hSdriE
+
 資料由客戶提供：AWS 
+
 </🔊>
 
 建立了 Repository 後，小明希望可以 Containerize 這個 Application，於是 Google 了 `nextjs dockerfile`，找到一篇 Medium 的教學，他 Copy & Paste 整個 DockerFile
@@ -54,8 +59,10 @@ docker run -d -p 3000:3000 next-app
 
 GitHub Repo: [https://github.com/gaplotech/skill-boost-plan](https://github.com/gaplotech/skill-boost-plan)
 
+Facebook Discussion: https://www.facebook.com/gaplotech/posts/3490226841005485
+
 ## 答案
 <details>
   <summary>檢查答案</summary>
-於兩日後公佈，歡迎接受挑戰
+https://github.com/gaplotech/skill-boost-plan/pull/4
 </details>
