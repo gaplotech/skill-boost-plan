@@ -1,0 +1,13 @@
+# Commmon
+**/.git
+**/.gitignore
+**/README.md
+**/.idea
+**/.vscode
+**/*.log
+
+# NodeJs Specific
+**/node_modules
+
+# Project Specific
+.next
