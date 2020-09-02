@@ -1,17 +1,14 @@
 【技術躍升系列】
-Consider the arr structure is like this,
+Question:
+Given that, there are one array and two black-box functions with the following declaration,
 ```js
- const arr = [{
-    id: number,
-    name: string,
-    someNum: number,
- }]
-```
-
-You can assume the black-box functions are having this declaration,
-```js
- const someTransform = ({ someNum: number }) => number | null
- const someCalculation = (number) => number
+const arr = [{
+   id: number,
+   name: string,
+   someNum: number,
+}]
+const someTransform = ({ someNum: number }) => number | null
+const someCalculation = (number) => number
 ```
 
 The possible size of array are in `{1, 10, 100, 1000, 10000, 100000, 1000000}`.
@@ -25,8 +22,9 @@ Requirement:
     6. return the total sum
 
 Please complete the requirements in its order.
+You may assume the possible size of array are in `{1, 10, 100, 1000, 10000, 100000, 1000000}`.
 
-就至上問題，開發至少三個 Implementations 並乎合以下的陳迹 (可使用任可 js library)：
+試就至上問題，開發至少三個 Implementations 並乎合以下的陳迹 (可使用任可 js library)：
 
 1. 開發你認為「最快」的 Implementation (`fastest`)
 2. 使用 Declarative Programming 的技巧，開發你認為「最易讀」的 Implementation (`declarative`)
