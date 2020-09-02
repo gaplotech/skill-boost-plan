@@ -4,7 +4,7 @@ const { createArr } = require('./common')
 
 Benchmark.options.initCount = 1
 
-// increase this for better precision
+// you can increase this for better precision
 Benchmark.options.minSamples = 5
 
 async function main() {
