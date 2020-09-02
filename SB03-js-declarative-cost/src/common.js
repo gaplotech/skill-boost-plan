@@ -1,18 +1,12 @@
-// Assume the arrSize are in [1, 10, 100, 1000, 10000, 100000, 1000000]
-const arrSize = parseInt(process.env.ARR_SIZE)
-
-if (!arrSize) {
-  throw new Error('missing ARR_SIZE environment variable')
-}
-
-const arr = new Array(arrSize).fill(null).map((value, index) => ({
-  id: index,
-  name: 'SomeName' + index,
-  // In this benchmark, we need:
-  //  1. stable null elements
-  //  2. stable duplicate elements
-  someNum: index % 2 ? index % (arrSize / 5) : null,
-}))
+const createArr = (size) =>
+  new Array(size).fill(null).map((value, index) => ({
+    id: index,
+    name: 'SomeName' + index,
+    // In this benchmark, we need stable duplicate elements for testing the distinct operation
+    someNum: index % (size / 5),
+  }))
+const someTransform = (it) => (it.someNum % 2 ? it.someNum : null)
+const someCalculation = (it) => it % 5
 
 // arrSize and pre-computed answers
 const answers = {
@@ -27,6 +21,7 @@ const answers = {
 
 module.exports = {
   answers,
-  arr,
-  arrSize,
+  createArr,
+  someTransform,
+  someCalculation,
 }

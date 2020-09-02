@@ -1,35 +1,43 @@
 const Benchmark = require('benchmark')
-const assert = require('assert')
 const { fastest, declarative, declarativeOptimized } = require('./perf-impl')
-const { answers, arr, arrSize } = require('./common')
+const { createArr } = require('./common')
 
-// assert the answer is correct before running the benchmark
-const ans = answers[`_${arrSize}`]
-assert.strictEqual(fastest(arr), ans)
-assert.strictEqual(declarative(arr), ans)
-assert.strictEqual(declarativeOptimized(arr), ans)
+Benchmark.options.initCount = 1
 
-const suite = new Benchmark.Suite('Standard Array Processing')
+// increase this for better precision
+Benchmark.options.minSamples = 5
 
-suite
-  .add('fastest', function () {
-    fastest(arr)
-  })
-  .add('declarative', function () {
-    declarative(arr)
-  })
-  .add('declarative-optimized', function () {
-    declarativeOptimized(arr)
-  })
-  .on('start', function () {
-    console.log(`${this.name} ARR_SIZE=${arrSize}`)
-  })
-  .on('cycle', function (event) {
-    const currentBench = event.target
-    console.log(String(currentBench))
-  })
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'))
-  })
-  // run async
-  .run({ async: false })
+async function main() {
+  for (const size of [1, 10, 100, 1000, 10000, 100000, 1000000]) {
+    // assert the answer is correct before running the benchmark
+    const arr = createArr(size)
+
+    await new Promise((resolve) => {
+      const suite = new Benchmark.Suite(`Standard Array Processing (size=${size})`)
+      suite
+        .add('fastest', function () {
+          fastest(arr)
+        })
+        .add('declarative', function () {
+          declarative(arr)
+        })
+        .add('declarative-optimized', function () {
+          declarativeOptimized(arr)
+        })
+        .on('start', function () {
+          console.log(this.name)
+        })
+        .on('cycle', function (event) {
+          const currentBench = event.target
+          console.log(String(currentBench))
+        })
+        .on('complete', function () {
+          console.log('Fastest is ' + this.filter('fastest').map('name'))
+          resolve()
+        })
+        .run({ async: false })
+    })
+  }
+}
+
+main()

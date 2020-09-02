@@ -1,11 +1,11 @@
 {
   "name": "sb03-js-declarative-cost",
   "version": "1.0.0",
-  "description": "【技術躍升系列】 試就下列 `arr` 的 Data Structure 及計算要求",
+  "description": "【技術躍升系列】SB03 javascript declarative cost",
   "main": "src/perf.js",
   "scripts": {
     "start": "node src/perf.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "benchmark": "^2.1.4"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "prettier": "^2.1.1"
   }
 }
