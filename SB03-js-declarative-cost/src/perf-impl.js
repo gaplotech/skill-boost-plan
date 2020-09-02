@@ -9,7 +9,7 @@ const { someTransform, someCalculation } = require('./common')
  *    name: string,
  *    someNum: number,
  * }]
- * const someTransform = ({ someNum: number }) => number | null
+ * const someTransform = ({ someNum }) => number | null
  * const someCalculation = (number) => number
  * ```
  *
