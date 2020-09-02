@@ -5,7 +5,7 @@
   "main": "src/perf.js",
   "scripts": {
     "start": "node src/perf.js",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
