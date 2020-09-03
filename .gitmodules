@@ -1,0 +1,3 @@
+[submodule "SB03-js-declarative-cost"]
+	path = SB03-js-declarative-cost
+	url = git@github.com:gaplotech/SB03-js-declarative-cost.git
